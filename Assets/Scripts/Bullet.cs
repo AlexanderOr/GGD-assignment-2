@@ -23,4 +23,25 @@ public class Bullet : MonoBehaviour
     {
         rb.velocity = new Vector2(0,12 * direction);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(direction == 1)
+        {
+            if (collision.gameObject.tag == "Enemy")
+            {
+                collision.gameObject.GetComponent<Enemy>().Damage();
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                collision.gameObject.GetComponent<Movement>().Damage();
+                Destroy(gameObject);
+            }
+        }
+        
+    }
 }

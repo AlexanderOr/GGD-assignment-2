@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float xSpeed;
     public float ySpeed;
     public float firerate;
+    public GameObject bullet;
 
     public bool canShoot;
 
@@ -20,9 +21,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (canShoot)
+        {
+            InvokeRepeating("Shoot", firerate, firerate);
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -43,7 +46,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
     
-    void Damage()
+    public void Damage()
     {
         health--;
         if(health == 0)
@@ -51,4 +54,11 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
+
+    void Shoot()
+    {
+        GameObject temp = (GameObject)Instantiate(bullet, transform.position, Quaternion.identity);
+        temp.GetComponent<Bullet>().ChangeDirection();
+    }
+
 }

@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     int health = 3;
     public GameObject bullet;
     GameObject a;
+    int delay;
 
     private void Awake()
     {
@@ -23,14 +24,17 @@ public class Movement : MonoBehaviour
         rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speed, 0));
         rb.AddForce(new Vector2(0,Input.GetAxis("Vertical") * speed));
 
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && delay > 15)
         {
             Shoot();
         }
+
+        delay++;
     }
 
     void Shoot()
     {
+        delay = 0;
         Instantiate(bullet, a.transform.position, Quaternion.identity);
 
     }
