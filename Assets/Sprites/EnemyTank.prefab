@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5062927908203813085}
   - component: {fileID: 5062927908203813083}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: EnemyTank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,10 +74,10 @@ SpriteRenderer:
   m_SortingLayerID: 1101939715
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7d2d9c979f9108c48af807d5f7419049, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3dc623a5ab6d11418a5119123871ea7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -102,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.12, y: 1}
+    oldSize: {x: 1.64, y: 1.77}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -123,11 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1378ceb0e548e8c4faebbf26f8cbb619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 5
   xSpeed: 0
   ySpeed: 1
-  firerate: 3
-  score: 100
+  firerate: 2
+  score: 250
   bullet: {fileID: 8419154954533350890, guid: cae7ec0d7d65f764e924c5540817b314, type: 3}
   explosion: {fileID: 3160184955731222033, guid: 044d042ddd86c0341b7894933be8ae0b, type: 3}
   canShoot: 1

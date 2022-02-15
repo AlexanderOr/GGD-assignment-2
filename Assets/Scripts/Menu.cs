@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
     public GameObject main;
     public void LoadLevel(string name)
     {
+        PlayerPrefs.SetInt("Score", 0);
         SceneManager.LoadScene(name);
     }
     public void optionsmenu()

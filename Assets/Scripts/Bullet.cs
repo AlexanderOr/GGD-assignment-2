@@ -39,6 +39,7 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 collision.gameObject.GetComponent<Movement>().Damage();
+                collision.gameObject.GetComponent<MainUI>().LifeLoss();
                 Destroy(gameObject);
             }
         }

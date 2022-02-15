@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
     public float xSpeed;
     public float ySpeed;
     public float firerate;
-    public GameObject bullet;
+    public int score;
+    public GameObject bullet, explosion;
 
     public bool canShoot;
 
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (canShoot)
         {
             InvokeRepeating("Shoot", firerate, firerate);
@@ -37,12 +39,15 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Movement>().Damage();
+            collision.gameObject.GetComponent<MainUI>().LifeLoss();
             Die();
         }
     }
 
     void Die()
     {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + score);
         Destroy(gameObject);
     }
     

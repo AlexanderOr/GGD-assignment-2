@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
     public float speed = 10;
     int health = 3;
-    public GameObject bullet;
+    public GameObject bullet,explosion,loseUI;
     GameObject a;
     int delay;
 
@@ -42,10 +43,19 @@ public class Movement : MonoBehaviour
     public void Damage()
     {
         health--;
+        StartCoroutine(Blink());
         if (health == 0)
         {
-            Destroy(gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(gameObject, 0.1f);
         }
             
+    }
+
+    IEnumerator Blink()
+    {
+        GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
     }
 }
