@@ -12,12 +12,14 @@ public class Enemy : MonoBehaviour
     public float firerate;
     public int score;
     public GameObject bullet, explosion;
+    public AudioSource explosionSound;
 
     public bool canShoot;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        explosionSound = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        explosionSound.Play();
         Instantiate(explosion, transform.position, Quaternion.identity);
         PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + score);
         Destroy(gameObject);
